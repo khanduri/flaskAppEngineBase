@@ -1,9 +1,15 @@
-from application import app
-from application.compute import api
+import application.app
+import application.compute.api
 
 
-app.add_url_rule('/compute', view_func=api.compute_desc, methods=['GET'])
-app.add_url_rule('/compute/<int:a>/<int:b>', view_func=api.compute, methods=['GET'])
+application.app.add_url_rule('/compute', view_func=application.compute.api.compute_desc, methods=['GET'])
+application.app.add_url_rule('/compute/<int:a>/<int:b>', view_func=application.compute.api.compute, methods=['GET'])
 
-app.add_url_rule('/computes', view_func=api.fetch_computes, methods=['GET'])
-app.add_url_rule('/computes/<int:compute_id>', view_func=api.fetch_compute, methods=['GET'])
+application.app.add_url_rule('/api/computes', view_func=application.compute.api.fetch_computes, methods=['GET'])
+application.app.add_url_rule('/api/computes', view_func=application.compute.api.replace_computes, methods=['PUT'])
+application.app.add_url_rule('/api/computes', view_func=application.compute.api.create_compute, methods=['POST'])
+application.app.add_url_rule('/api/computes', view_func=application.compute.api.remove_computes, methods=['DELETE'])
+application.app.add_url_rule('/api/computes/<int:compute_id>', view_func=application.compute.api.fetch_compute, methods=['GET'])
+application.app.add_url_rule('/api/computes/<int:compute_id>', view_func=application.compute.api.replace_compute, methods=['PUT'])
+# application.app.add_url_rule('/api/computes/<int:compute_id>', view_func=application.compute.api.fetch_compute, methods=['POST'])  # NOT GENERALLY USED
+application.app.add_url_rule('/api/computes/<int:compute_id>', view_func=application.compute.api.remove_compute, methods=['DELETE'])

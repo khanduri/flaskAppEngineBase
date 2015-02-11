@@ -1,5 +1,51 @@
-from application.compute import services
-from application.base import api as base_api
+import application.compute.services
+import application.base.api
+
+
+##########################################
+# Collection operations
+##########################################
+
+
+def fetch_computes():
+    computes = application.compute.services.get_all_computes()
+    compute_list = [e.get_dict_repr() for e in computes]
+    return application.base.api.get_json_packet(compute_list)
+
+
+def replace_computes():
+    raise NotImplementedError()
+
+
+def create_compute():
+    raise NotImplementedError()
+
+
+def remove_computes():
+    raise NotImplementedError()
+
+
+##########################################
+# Resource operations
+##########################################
+
+
+def fetch_compute(compute_id):
+    compute_instance = application.compute.services.get_compute(compute_id)
+    return application.base.api.get_json_packet(compute_instance.get_dict_repr())
+
+
+def replace_compute(compute_id):
+    raise NotImplementedError()
+
+
+def remove_compute(compute_id):
+    raise NotImplementedError()
+
+
+##########################################
+# GET RID OF THE FOLLOWING
+##########################################
 
 
 def compute_desc():
@@ -7,17 +53,6 @@ def compute_desc():
 
 
 def compute(a, b):
-    services.save_compute(a, b)
+    application.compute.services.save_compute(a, b)
     return "a: %s + b: %s = %s" % (a, b, (a + b))
-
-
-def fetch_computes():
-    computes = services.get_all_computes()
-    # compute_list = [{'id': e.key.id(), 'a': e.a, 'b': e.b, 'compute': e.a + e.b} for e in computes]
-    compute_list = [e.get_dict_repr() for e in computes]
-    return base_api.get_json_packet(compute_list)
-
-def fetch_compute(compute_id):
-    compute = services.get_compute(compute_id)
-    return base_api.get_json_packet(compute.get_dict_repr())
 

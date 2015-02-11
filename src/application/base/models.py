@@ -17,4 +17,3 @@ class DictableModel(BaseModel):
             'timestamp_modified': self.timestamp_modified,
         }
         return data
-
