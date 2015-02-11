@@ -1,4 +1,5 @@
 from application.compute import services
+from application.base import api as base_api
 
 
 def compute_desc():
@@ -12,4 +13,6 @@ def compute(a, b):
 
 def fetch_computes():
     computes = services.get_all_computes()
-    return "<BR />".join(["id:%s = a=%s + b=%s = %s" % (e.key.id(), e.a, e.b, e.a + e.b) for e in computes])
+    compute_list = [{'id': e.key.id(), 'a': e.a, 'b': e.b, 'compute': e.a + e.b} for e in computes]
+    return base_api.get_json_packet(compute_list)
+

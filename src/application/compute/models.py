@@ -3,5 +3,5 @@ from application.base.models import BaseModel
 
 
 class ComputeModel(BaseModel):
-    a = ndb.IntegerProperty()
-    b = ndb.IntegerProperty()
+    a = ndb.IntegerProperty(required=True)
+    b = ndb.IntegerProperty(required=True)
