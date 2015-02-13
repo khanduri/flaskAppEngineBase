@@ -7,21 +7,23 @@ import application.base.api
 ##########################################
 
 
-def fetch_computes():
-    computes = application.compute.services.get_all_computes()
+def get_all_computes():
+    computes = application.compute.services.fetch_all_computes()
     compute_list = [e.get_dict_repr() for e in computes]
-    return application.base.api.get_json_packet(compute_list)
+    return application.base.api.get_json_packet(data=compute_list)
 
 
-def replace_computes():
-    raise NotImplementedError()
+def update_all_computes():
+    application.compute.services.modify_all_computes()
 
 
-def create_compute():
-    raise NotImplementedError()
+def post_compute():
+    # TODO: read form here
+    a, b = (14, 15)
+    application.compute.services.create_new_compute(a, b)
 
 
-def remove_computes():
+def delete_all_computes():
     raise NotImplementedError()
 
 
@@ -30,15 +32,15 @@ def remove_computes():
 ##########################################
 
 
-def fetch_compute(compute_id):
-    compute_instance = application.compute.services.get_compute(compute_id)
+def get_compute(compute_id):
+    compute_instance = application.compute.services.fetch_compute(compute_id)
     return application.base.api.get_json_packet(compute_instance.get_dict_repr())
 
 
-def replace_compute(compute_id):
+def update_compute(compute_id):
     raise NotImplementedError()
 
 
-def remove_compute(compute_id):
+def delete_compute(compute_id):
     raise NotImplementedError()
 

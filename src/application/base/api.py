@@ -2,7 +2,7 @@ import flask
 import time
 
 
-def get_json_packet(data):
+def get_json_packet(ststus=200, data={}):
     return_dict = {
         'meta': {
             'status': 200,
