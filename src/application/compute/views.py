@@ -12,5 +12,5 @@ def compute_desc():
 
 
 def compute(a, b):
-    application.compute.services.save_compute(a, b)
+    application.compute.services.create_new_compute(a, b)
     return "a: %s + b: %s = %s" % (a, b, (a + b))

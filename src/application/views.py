@@ -29,11 +29,6 @@ def home():
     return redirect(url_for('list_examples'))
 
 
-def say_hello(username):
-    """Contrived example to demonstrate Flask's url routing capabilities"""
-    return 'Hello %s' % username
-
-
 @login_required
 def list_examples():
     """List all examples"""
@@ -99,7 +94,7 @@ def cached_examples():
 
 def warmup():
     """App Engine warmup handler
-    See http://code.google.com/appengine/docs/python/config/appconfig.html#Warming_Requests
+    See https://cloud.google.com/appengine/docs/python/config/appconfig?csw=1#Python_app_yaml_Warmup_requests
 
     """
     return ''
