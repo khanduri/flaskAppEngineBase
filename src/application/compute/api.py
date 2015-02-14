@@ -1,5 +1,6 @@
-import application.compute.services
 import application.base.api
+import application.compute.forms
+import application.compute.services
 
 
 ##########################################
@@ -14,10 +15,11 @@ def get_all_computes():
 
 
 def post_compute():
-    # TODO: read form here
-    a, b = (14, 15)
-    application.compute.services.create_new_compute(a, b)
-    return application.base.api.get_json_packet()
+    form = application.compute.forms.ComputeForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        application.compute.services.create_new_compute(form.data.get('a'), form.data.get('b'))
+        return application.base.api.get_json_packet()
+    return application.base.api.get_json_packet(status=404)
 
 
 def delete_all_computes():
@@ -36,10 +38,11 @@ def get_compute(compute_id):
 
 
 def update_compute(compute_id):
-    # TODO: read form here
-    a, b = (14, 15)
-    compute_instance = application.compute.services.modify_compute(compute_id, a, b)
-    return application.base.api.get_json_packet(data=compute_instance.get_dict_repr())
+    form = application.compute.forms.ComputeForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        compute_instance = application.compute.services.modify_compute(compute_id, form.data.get('a'), form.data.get('b'))
+        return application.base.api.get_json_packet(data=compute_instance.get_dict_repr())
+    return application.base.api.get_json_packet(status=404)
 
 
 def delete_compute(compute_id):
