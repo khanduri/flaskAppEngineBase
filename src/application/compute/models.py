@@ -14,4 +14,3 @@ class ComputeModel(application.base.models.DictableModel):
             'b': self.b,
         })
         return data
-

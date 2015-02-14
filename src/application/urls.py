@@ -6,7 +6,6 @@ URL dispatch route mappings and error handlers
 """
 from flask import render_template
 
-import application
 import application.views
 
 
