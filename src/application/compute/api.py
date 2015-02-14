@@ -17,10 +17,12 @@ def post_compute():
     # TODO: read form here
     a, b = (14, 15)
     application.compute.services.create_new_compute(a, b)
+    return application.base.api.get_json_packet()
 
 
 def delete_all_computes():
-    raise NotImplementedError()
+    application.compute.services.remove_all_computes()
+    return application.base.api.get_json_packet()
 
 
 ##########################################
@@ -41,5 +43,6 @@ def update_compute(compute_id):
 
 
 def delete_compute(compute_id):
-    raise NotImplementedError()
+    application.compute.services.remove_compute(compute_id)
+    return application.base.api.get_json_packet()
 
