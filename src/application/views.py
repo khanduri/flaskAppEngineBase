@@ -11,7 +11,7 @@ For example the *say_hello* handler, handling the URL route '/hello/<username>',
 from google.appengine.api import users
 from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
 
-from flask import request, render_template, flash, url_for, redirect
+from flask import render_template, url_for, redirect
 
 from flask_cache import Cache
 
@@ -31,7 +31,7 @@ def home():
 @login_required
 def list_examples():
     examples = ExampleModel.query()
-    return render_template('list_examples.html', examples=examples, form=form)
+    return render_template('list_examples.html', examples=examples)
 
 
 @admin_required
