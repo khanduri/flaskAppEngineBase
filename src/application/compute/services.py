@@ -7,20 +7,18 @@ import application.compute.models
 
 
 def fetch_all_computes():
-    computes = application.compute.models.ComputeModel.query()
+    computes = application.compute.models.ComputeQuery.select_all()
     return computes
 
 
 def create_new_compute(a, b):
-    compute = application.compute.models.ComputeModel(a=a, b=b)
-    return compute.put()
+    compute = application.compute.models.ComputeQuery.insert_single(a, b)
+    return compute
 
 
 def remove_all_computes():
-    computes = application.compute.models.ComputeModel.query()
-    list_of_keys = [c.key for c in computes]
-    import google.appengine.ext.ndb
-    google.appengine.ext.ndb.delete_multi(list_of_keys)
+    application.compute.models.ComputeQuery.delete_all()
+    return True
 
 
 ##########################################
@@ -29,19 +27,15 @@ def remove_all_computes():
 
 
 def fetch_compute(compute_id):
-    compute = application.compute.models.ComputeModel.get_by_id(compute_id)
+    compute = application.compute.models.ComputeQuery.select_by_id(compute_id)
     return compute
 
 
 def modify_compute(compute_id, a, b):
-    compute = application.compute.models.ComputeModel.get_by_id(compute_id)
-    compute.a = a
-    compute.b = b
-    compute.put()
+    compute = application.compute.models.ComputeQuery.update_by_id(compute_id, a, b)
     return compute
 
 
 def remove_compute(compute_id):
-    compute = application.compute.models.ComputeModel.get_by_id(compute_id)
-    compute.key.delete()
+    application.compute.models.ComputeQuery.delete_by_id(compute_id)
     return True

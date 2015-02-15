@@ -1,16 +1,12 @@
-import google.appengine.ext.ndb
-import application.base.models
+import application.compute.data.gae
 
 
-class ComputeModel(application.base.models.DictableModel):
+class ComputeModel(object):
 
-    a = google.appengine.ext.ndb.IntegerProperty(required=True)
-    b = google.appengine.ext.ndb.IntegerProperty(required=True)
+    def __init__(self, data):
+        self.data = data
+        for k, v in data.iteritems():
+            setattr(self, k, v)
 
-    def get_dict_repr(self):
-        data = super(ComputeModel, self).get_dict_repr()
-        data.update({
-            'a': self.a,
-            'b': self.b,
-        })
-        return data
+
+ComputeQuery = application.compute.data.gae.ComputeQuery(ComputeModel)
