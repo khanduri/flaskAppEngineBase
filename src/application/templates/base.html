@@ -8,6 +8,7 @@
 {% set awesome_version = '4.0.1' %}
 {% set bootswatch_version = '3.0.0' %}
 {% set bootswatch_theme = 'cyborg' %}
+{% set angular_version = '1.3.13' %}
 
 <head>
     <meta charset="utf-8">
@@ -48,9 +49,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/{{ jquery_version }}/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/{{ bootstrap_version }}/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/parsley.js/{{ parsley_version }}/parsley-standalone.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/{{ angular_version }}/angular.min.js"></script>
     <script src="/static/js/main.js"></script>
 
     {% block tail_script %}{# defer-capable JS block #}{% endblock %}
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+    </script>
 
 </body>
 </html>
