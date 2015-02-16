@@ -3,7 +3,7 @@ import application.compute.api
 import application.compute.views
 
 
-application.app.add_url_rule('/computes', view_func=application.compute.views.compute_desc, methods=['GET'])
+application.app.add_url_rule('/computes', 'computes_home', view_func=application.compute.views.compute_desc, methods=['GET'])
 application.app.add_url_rule('/compute/<int:a>/<int:b>', view_func=application.compute.views.compute, methods=['GET'])
 
 application.app.add_url_rule('/api/computes', view_func=application.compute.api.get_all_computes, methods=['GET'])
