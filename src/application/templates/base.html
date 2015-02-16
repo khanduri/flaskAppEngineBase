@@ -14,14 +14,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
 
-    <title>{% block title%}{% endblock %}</title>
+    <title>{% block title%}{# Insert title for the page #}{% endblock %}</title>
 
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/{{ bootstrap_version }}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/{{ awesome_version }}/css/font-awesome.min.css" rel="stylesheet" >
     <link href="//netdna.bootstrapcdn.com/bootswatch/{{ bootswatch_version }}/{{ bootswatch_theme }}/bootstrap.min.css" rel="stylesheet" >
 
     <link href="/static/css/main.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
 
     {% block style_block %}{# page-specific CSS #}{% endblock %}
 

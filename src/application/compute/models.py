@@ -1,4 +1,4 @@
-import application.compute.data.gae
+import application.compute.data.google_data_store
 
 
 class ComputeModel(object):
@@ -9,4 +9,4 @@ class ComputeModel(object):
             setattr(self, k, v)
 
 
-ComputeQuery = application.compute.data.gae.ComputeQuery(ComputeModel)
+ComputeQuery = application.compute.data.google_data_store.ComputeQuery(ComputeModel)
