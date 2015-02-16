@@ -1,9 +1,3 @@
-"""
-urls.py
-
-URL dispatch route mappings and error handlers
-
-"""
 from flask import render_template
 
 import application.views
@@ -15,9 +9,12 @@ import application.views
 application.app.add_url_rule('/_ah/warmup', 'warmup', view_func=application.views.warmup)
 
 application.app.add_url_rule('/', 'home', view_func=application.views.home)
+
+############## REMOVE THIS #################
 application.app.add_url_rule('/admin_only', 'admin_only', view_func=application.views.admin_only)
 application.app.add_url_rule('/examples', 'list_examples', view_func=application.views.list_examples, methods=['GET'])
 application.app.add_url_rule('/examples/cached', 'cached_examples', view_func=application.views.cached_examples, methods=['GET'])
+############## REMOVE THIS #################
 
 
 import application.compute.urls

@@ -6,11 +6,7 @@ URL route handlers
 Note that any handler params must match the URL route params.
 For example the *say_hello* handler, handling the URL route '/hello/<username>',
   must be passed *username* as the argument.
-
 """
-from google.appengine.api import users
-from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
-
 from flask import render_template, url_for, redirect
 
 from flask_cache import Cache
@@ -25,7 +21,15 @@ cache = Cache(app)
 
 
 def home():
-    return redirect(url_for('list_examples'))
+    return redirect(url_for('home'))
+
+
+def warmup():
+    """
+    App Engine warmup handler
+    See https://cloud.google.com/appengine/docs/python/config/appconfig?csw=1#Python_app_yaml_Warmup_requests
+    """
+    return ''
 
 
 @login_required
@@ -46,11 +50,4 @@ def cached_examples():
     examples = ExampleModel.query()
     return render_template('list_examples_cached.html', examples=examples)
 
-
-def warmup():
-    """App Engine warmup handler
-    See https://cloud.google.com/appengine/docs/python/config/appconfig?csw=1#Python_app_yaml_Warmup_requests
-
-    """
-    return ''
 
