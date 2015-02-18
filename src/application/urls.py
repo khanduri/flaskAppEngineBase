@@ -16,7 +16,6 @@ application.app.add_url_rule('/examples', 'list_examples', view_func=application
 application.app.add_url_rule('/examples/cached', 'cached_examples', view_func=application.views.cached_examples, methods=['GET'])
 ############## REMOVE THIS #################
 
-
 import application.compute.urls
 
 
