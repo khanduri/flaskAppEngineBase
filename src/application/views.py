@@ -23,21 +23,17 @@ def warmup():
 ############## REMOVE THIS #################
 @decorators.login_required
 def list_examples():
-    from models import ExampleModel
-    examples = ExampleModel.query()
+    examples = None
     return flask.render_template('list_examples.html', examples=examples)
 
 
 @decorators.admin_required
 def admin_only():
-    """This view requires an admin account"""
     return 'Super-seekrit admin page.'
 
 
 @cache.cached(timeout=60)
 def cached_examples():
-    """This view should be cached for 60 sec"""
-    from models import ExampleModel
-    examples = ExampleModel.query()
+    examples = None
     return flask.render_template('list_examples_cached.html', examples=examples)
 ############## REMOVE THIS #################
