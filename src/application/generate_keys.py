@@ -32,6 +32,12 @@ file_template = Template('''# CSRF- and Session keys
 
 CSRF_SECRET_KEY = '$csrf_key'
 SESSION_KEY = '$session_key'
+
+FB_APP_ID = ''
+FB_APP_SECRET = ''
+
+TW_CONSUMER_KEY = ''
+TW_CONSUMER_SECRET = ''
 ''')
 
 

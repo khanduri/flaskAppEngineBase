@@ -32,7 +32,7 @@ class ComputeQuery(object):
     ##########################################
 
     def select_all(self):
-        computes = Compute.query()
+        computes = Compute.query().order(-Compute.timestamp_created)
         return [self.model_class(c.get_dict_repr()) for c in computes]
 
     def insert_single(self, a, b):
