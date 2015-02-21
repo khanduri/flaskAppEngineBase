@@ -1,5 +1,5 @@
-from flask import render_template
-
+import flask
+import application.mails.starter
 import application.views
 
 
@@ -23,10 +23,10 @@ import application.compute.urls
 # Handle 404 errors
 @application.app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return flask.render_template('404.html'), 404
 
 # Handle 500 errors
 @application.app.errorhandler(500)
 def server_error(e):
-    return render_template('500.html'), 500
+    return flask.render_template('500.html'), 500
 

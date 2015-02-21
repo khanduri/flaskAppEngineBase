@@ -8,12 +8,31 @@ Important: Place your keys in the secret_keys.py module,
 
 """
 import secret_keys
-# import authomatic.providers.openid
 import authomatic.providers.oauth1
 import authomatic.providers.oauth2
 
 
-CONFIG = {
+#############################################
+# Emails
+#############################################
+class EMails(object):
+    NO_REPLY = secret_keys.Emails.NO_REPLY
+    SITE_ADMIN = secret_keys.Emails.SITE_ADMIN
+
+
+#############################################
+# Sendgrid settings (your sendgrid username and password here)
+#############################################
+SENDGRID_USERNAME = secret_keys.SENDGRID_USERNAME
+SENDGRID_PASSWORD = secret_keys.SENDGRID_PASSWORD
+
+
+#############################################
+# Authomatic
+#############################################
+AUTHOMATIC_SECRET_STRING = secret_keys.AUTHOMATIC_SECRET_STRING
+
+AUTHOMATIC_CONFIG = {
     'tw': {
         # make sure to make the edit to /etc/hosts
         'class_': authomatic.providers.oauth1.Twitter,
@@ -26,12 +45,11 @@ CONFIG = {
         'consumer_secret': secret_keys.FB_APP_SECRET,
         'scope': ['user_about_me', 'email', 'publish_stream'],
     },
-    # 'oi': {
-    #     'class_': authomatic.providers.openid.OpenID,
-    # }
 }
 
-
+#############################################
+# Basic Config
+#############################################
 class Config(object):
     # Set secret keys for CSRF protection
     SECRET_KEY = secret_keys.CSRF_SECRET_KEY

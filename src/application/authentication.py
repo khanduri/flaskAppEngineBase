@@ -5,7 +5,9 @@ import authomatic.adapters
 import authomatic
 
 
-auth = authomatic.Authomatic(application.settings.CONFIG, 'SUPER SEEKRIT SHTRINGG', report_errors=False)
+auth = authomatic.Authomatic(application.settings.AUTHOMATIC_CONFIG,
+                             application.settings.AUTHOMATIC_SECRET_STRING,
+                             report_errors=False)
 
 
 @application.app.route('/login/<provider_name>/', methods=['GET', 'POST'])

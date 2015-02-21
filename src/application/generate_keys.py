@@ -28,10 +28,33 @@ from string import Template
 file_name = 'secret_keys.py'
 file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), file_name)
 
-file_template = Template('''# CSRF- and Session keys
-
+file_template = Template('''
+#############################################
+# CSRF- and Session keys
+#############################################
 CSRF_SECRET_KEY = '$csrf_key'
 SESSION_KEY = '$session_key'
+
+
+#############################################
+# EMail Settings
+#############################################
+class Emails(object):
+    NO_REPLY = ''
+    SITE_ADMIN = ''
+
+
+#############################################
+# Sendgrid settings (your sendgrid username and password here)
+#############################################
+SENDGRID_USERNAME = ''
+SENDGRID_PASSWORD = ''
+
+
+#############################################
+# Authomatic
+#############################################
+AUTHOMATIC_SECRET_STRING = '$authomatic_key'
 
 FB_APP_ID = ''
 FB_APP_SECRET = ''
@@ -63,26 +86,30 @@ def write_file(contents):
         f.write(contents)
 
 
-def generate_keyfile(csrf_key, session_key):
-    """Generate random keys for CSRF- and session key"""
-    output = file_template.safe_substitute(dict(
-        csrf_key=csrf_key, session_key=session_key
-    ))
-    if os.path.exists(file_path):
-        if options.force is None:
-            print "Warning: secret_keys.py file exists.  Use 'generate_keys.py --force' to force overwrite."
-        else:
-            write_file(output)
-    else:
-        write_file(output)
+def generate_keyfile():
 
-
-def main():
     r = options.randomness
     csrf_key = generate_randomkey(r)
     session_key = generate_randomkey(r)
-    generate_keyfile(csrf_key, session_key)
+    authomatic_key = generate_randomkey(r)
+
+    output = file_template.safe_substitute(dict(
+        csrf_key=csrf_key,
+        session_key=session_key,
+        authomatic_key=authomatic_key,
+    ))
+
+    if options.force is not None:
+        write_file(output)
+        return
+
+    if not os.path.exists(file_path):
+        write_file(output)
+        return
+
+    print "Warning: secret_keys.py file exists.  Use 'generate_keys.py --force' to force overwrite."
+
 
 
 if __name__ == "__main__":
-    main()
+    generate_keyfile()
