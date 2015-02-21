@@ -2,6 +2,7 @@ import application
 import application.compute.api
 import application.compute.views
 import application.compute.tasks
+import application.compute.cron
 
 
 ##########################################################################################
@@ -31,3 +32,9 @@ application.app.add_url_rule('/api/computes/<int:compute_id>', view_func=applica
 
 application.app.add_url_rule('/tasks/computes', view_func=application.compute.tasks.computes, methods=['GET'])
 application.app.add_url_rule('/procs/computes', view_func=application.compute.tasks.computes_procs, methods=['POST'])
+
+##########################################################################################
+# Cron
+##########################################################################################
+
+application.app.add_url_rule('/cron/computes/cleanup', view_func=application.compute.cron.cleanup, methods=['GET'])

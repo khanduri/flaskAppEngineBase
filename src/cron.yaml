@@ -1,0 +1,4 @@
+cron:
+- description: daily compute cleanup
+  url: /cron/computes/cleanup
+  schedule: every 24 hours
