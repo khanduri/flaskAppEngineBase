@@ -1,10 +1,12 @@
 import flask
 import flask_cache
+
 import application
-import decorators
 
 
 # Flask-Cache (configured to use App Engine Memcache API)
+from application.core import decorators
+
 cache = flask_cache.Cache(application.app)
 
 

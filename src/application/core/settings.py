@@ -1,59 +1,52 @@
-"""
-settings.py
-
-Configuration for Flask app
-
-Important: Place your keys in the secret_keys.py module, 
-           which should be kept out of version control.
-
-"""
-import secret_keys
 import authomatic.providers.oauth1
 import authomatic.providers.oauth2
+
+import application.secret_keys
 
 
 #############################################
 # Emails
 #############################################
 class EMails(object):
-    NO_REPLY = secret_keys.Emails.NO_REPLY
-    SITE_ADMIN = secret_keys.Emails.SITE_ADMIN
+    NO_REPLY = application.secret_keys.Emails.NO_REPLY
+    SITE_ADMIN = application.secret_keys.Emails.SITE_ADMIN
 
 
 #############################################
 # Sendgrid settings (your sendgrid username and password here)
 #############################################
-SENDGRID_USERNAME = secret_keys.SENDGRID_USERNAME
-SENDGRID_PASSWORD = secret_keys.SENDGRID_PASSWORD
+SENDGRID_USERNAME = application.secret_keys.SENDGRID_USERNAME
+SENDGRID_PASSWORD = application.secret_keys.SENDGRID_PASSWORD
 
 
 #############################################
 # Authomatic
 #############################################
-AUTHOMATIC_SECRET_STRING = secret_keys.AUTHOMATIC_SECRET_STRING
+AUTHOMATIC_SECRET_STRING = application.secret_keys.AUTHOMATIC_SECRET_STRING
 
 AUTHOMATIC_CONFIG = {
     'tw': {
         # make sure to make the edit to /etc/hosts
         'class_': authomatic.providers.oauth1.Twitter,
-        'consumer_key': secret_keys.TW_CONSUMER_KEY,
-        'consumer_secret': secret_keys.TW_CONSUMER_SECRET,
+        'consumer_key': application.secret_keys.TW_CONSUMER_KEY,
+        'consumer_secret': application.secret_keys.TW_CONSUMER_SECRET,
     },
     'fb': {
         'class_': authomatic.providers.oauth2.Facebook,
-        'consumer_key': secret_keys.FB_APP_ID,
-        'consumer_secret': secret_keys.FB_APP_SECRET,
+        'consumer_key': application.secret_keys.FB_APP_ID,
+        'consumer_secret': application.secret_keys.FB_APP_SECRET,
         'scope': ['user_about_me', 'email', 'publish_stream'],
     },
 }
+
 
 #############################################
 # Basic Config
 #############################################
 class Config(object):
     # Set secret keys for CSRF protection
-    SECRET_KEY = secret_keys.CSRF_SECRET_KEY
-    CSRF_SESSION_KEY = secret_keys.SESSION_KEY
+    SECRET_KEY = application.secret_keys.CSRF_SECRET_KEY
+    CSRF_SESSION_KEY = application.secret_keys.SESSION_KEY
     # Flask-Cache settings
     CACHE_TYPE = 'gaememcached'
 

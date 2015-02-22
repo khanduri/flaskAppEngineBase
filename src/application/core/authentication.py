@@ -1,12 +1,13 @@
-import application
-import application.settings
 import flask
 import authomatic.adapters
 import authomatic
 
+import application
+import application.core.settings
 
-auth = authomatic.Authomatic(application.settings.AUTHOMATIC_CONFIG,
-                             application.settings.AUTHOMATIC_SECRET_STRING,
+
+auth = authomatic.Authomatic(application.core.settings.AUTHOMATIC_CONFIG,
+                             application.core.settings.AUTHOMATIC_SECRET_STRING,
                              report_errors=False)
 
 

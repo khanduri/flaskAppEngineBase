@@ -1,10 +1,11 @@
 import sendgrid
-import application.settings
+
+import application.core.settings
 
 
 email_provider = sendgrid.SendGridClient(
-    application.settings.SENDGRID_USERNAME,
-    application.settings.SENDGRID_PASSWORD,
+    application.core.settings.SENDGRID_USERNAME,
+    application.core.settings.SENDGRID_PASSWORD,
     secure=True)
 
 
@@ -19,6 +20,6 @@ def send_message(send_to_list, subject, html, text, send_from=None):
     message.set_text(text)
 
     if not send_from:
-        message.set_from(application.settings.EMails.NO_REPLY)
+        message.set_from(application.core.settings.EMails.NO_REPLY)
 
     email_provider.send(message)
