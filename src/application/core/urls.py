@@ -1,6 +1,5 @@
 import flask
 
-import application.base.mails.starter
 import application.core.views
 
 
@@ -30,4 +29,3 @@ def page_not_found(e):
 @application.app.errorhandler(500)
 def server_error(e):
     return flask.render_template('500.html'), 500
-
