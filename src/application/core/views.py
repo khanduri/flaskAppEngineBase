@@ -20,16 +20,9 @@ def warmup():
 
 
 ############## REMOVE THIS #################
-@application.core.decorators.login_required
-def list_examples():
-    examples = None
-    return flask.render_template('list_examples.html', examples=examples)
-
-
 @application.core.decorators.admin_required
 def admin_only():
     return 'Super-seekrit admin page.'
-
 
 @cache.cached(timeout=60)
 def cached_examples():

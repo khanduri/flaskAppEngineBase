@@ -3,17 +3,33 @@
 {% block content %}
 
     {% if not result %}
-        <!--Links to the login handler-->
-        Login with <a href="login/fb">Facebook</a>
-        <br />
-        Login with <a href="login/tw">Twitter</a>
-        <br />
 
-        <!--OpenID form-->
-{#        <form action="login/oi">#}
-{#            <input type="text" name="id" value="me.yahoo.com" />#}
-{#            <input type="submit" value="Authenticate With OpenID">#}
-{#        </form>#}
+        <div class="jumbotron">
+            <div class="row text-center">
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Login With</label>
+                        <hr/>
+                        <a class="form-control btn btn-info" href="login/fb">Facebook - <i class="fa fa-facebook"></i></a>
+                        <a class="form-control btn btn-primary" href="login/tw">Twitter - <i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    OR
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label>Signup Form</label>
+                        <input class="form-control" type="text" placeholder="Email"/>
+                        <input class="form-control" type="text" placeholder="Password"/>
+                        <input class="form-control" type="text" placeholder="First Name"/>
+                        <input class="form-control" type="text" placeholder="Last Name"/>
+                        <hr/>
+                        <a class="form-control btn btn-success">Sign up!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     {% else %}
 

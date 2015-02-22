@@ -23,6 +23,8 @@ Todo
 -------
 [ ] Add test support
 [ ] Add logging support
+[ ] Support Roles
+[ ] Add Feedback options
 [ ] Native authentication
 [x] Add mail support
 [x] Remove libs from repo
