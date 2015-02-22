@@ -1,4 +1,4 @@
-import application.mails
+import application.base.mails
 
 # TODO: think about async email trigger
 # TODO: think about email priority
@@ -10,4 +10,4 @@ def starter_email(send_to):
     html = 'and easy to do anywhere, even with Python'
     text = 'Raw text content body'
 
-    application.mails.send_message(send_to, subject, html, text)
+    application.base.mails.send_message(send_to, subject, html, text)

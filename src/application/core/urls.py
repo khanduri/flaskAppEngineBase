@@ -1,6 +1,6 @@
 import flask
 
-import application.mails.starter
+import application.base.mails.starter
 import application.core.views
 
 
