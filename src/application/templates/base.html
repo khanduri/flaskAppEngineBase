@@ -33,19 +33,18 @@
 </head>
 <body>
 
+    {% include 'includes/nav.html' %}
+
     <div class="container" id="maincontent">
-        {% include 'includes/nav.html' %}
         {% include 'includes/flash_message.html' %}
+
         <div id="body_content">
             {% block content %}{# main content area #}{% endblock %}
         </div>
+
     </div>
 
-    <footer>
-        <div id="footer" class="container">
-            {% block footer %}{% endblock %}
-        </div>
-    </footer>
+    {% include 'includes/footer.html' %}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/{{ jquery_version }}/jquery.min.js"></script>
     <script src="{{ cdn_host }}/bootstrap/{{ bootstrap_version }}/js/bootstrap.min.js"></script>

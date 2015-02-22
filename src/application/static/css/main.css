@@ -1,1 +1,24 @@
 
+.nav-content {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+}
+
+.text-muted {
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer ul li a {
+    color: #717171;
+}

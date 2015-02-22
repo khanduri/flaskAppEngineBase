@@ -1,36 +1,39 @@
 <nav class="navbar navbar-default" role="navigation">
+    <div class="nav-content">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">HOME</a>
+        </div>
 
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">HOME</a>
+        {% if not result %}
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="login/fb">Login with Facebook</a></li>
+                    <li><a href="login/tw">Login with Twitter</a></li>
+                </ul>
+            </div>
+
+        {% else %}
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Right Link</a></li>
+                    <li><a href="#">Right Link</a></li>
+                    <li><a href="#">Right Link</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Left Link</a></li>
+                </ul>
+            </div>
+
+        {% endif %}
+
     </div>
-
-    {% if not result %}
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            <li><a href="login/fb">Login with Facebook</a></li>
-            <li><a href="login/tw">Login with Twitter</a></li>
-            </ul>
-        </div>
-    {% else %}
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#">Right Link</a></li>
-                <li><a href="#">Right Link</a></li>
-                <li><a href="#">Right Link</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Left Link</a></li>
-            </ul>
-        </div>
-
-    {% endif %}
-
 </nav>
