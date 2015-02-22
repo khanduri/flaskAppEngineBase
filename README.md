@@ -3,23 +3,32 @@ Gogle App Base: Flask
 Work In Progress
 
 
+
 Documentation
 -------
-Coming soon
 
+Getting Started:
 1. git clone https://github.com/khanduri/flaskAppEngineBase.git
 1. initial_setup.sh
 1. dev_appserver.py src/
 1. appcfg.py update src/
 
+New package dependency:
+1. pip install <package>
+1. update_packages.sh
+
+
 
 Todo
 -------
-1. Remove libs from repo
-1. Add test support
-1. Native authentication
-1. Add logging support
-1. Add mail support
+[ ] Add test support
+[ ] Add logging support
+[ ] Native authentication
+[x] Add mail support
+[x] Remove libs from repo
+
+
 
 Credits
 -------
+Sources here .. oming soon
