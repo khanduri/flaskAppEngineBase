@@ -18,17 +18,15 @@ Use the '-f' flag to force the new keys to be written to the file
 
 import string
 import os.path
-
-from optparse import OptionParser
-from random import choice
-from string import Template
+import optparse
+import random
 
 
 # File settings
 file_name = 'secret_keys.py'
 file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), file_name)
 
-file_template = Template('''
+file_template = string.Template('''
 #############################################
 # CSRF- and Session keys
 #############################################
@@ -65,7 +63,7 @@ TW_CONSUMER_SECRET = ''
 
 
 # Get options from command line
-parser = OptionParser()
+parser = optparse.OptionParser()
 parser.add_option(
     "-f", "--force", dest="force",
     help="force overwrite of existing secret_keys file", action="store_true")
@@ -78,7 +76,7 @@ parser.add_option(
 def generate_randomkey(length):
     """Generate random key, given a number of characters"""
     chars = string.letters + string.digits
-    return ''.join([choice(chars) for _ in range(length)])
+    return ''.join([random.choice(chars) for _ in range(length)])
 
 
 def write_file(contents):
