@@ -1,23 +1,22 @@
 import functools
-import google.appengine.api.users
 import flask
+import application.core.utils
+import application.user.services
 
 
 def login_required(func):
     @functools.wraps(func)
-    def decorated_view(*args, **kwargs):
-        if not google.appengine.api.users.get_current_user():
-            return flask.redirect(google.appengine.api.users.create_login_url(flask.request.url))
-        return func(*args, **kwargs)
-    return decorated_view
+    def wrapper():
+        sid = flask.request.cookies.get('sid')
+        session = application.core.utils.Session(sid)
 
+        if not session.valid:
+            return flask.redirect('/login')
 
-def admin_required(func):
-    @functools.wraps(func)
-    def decorated_view(*args, **kwargs):
-        if google.appengine.api.users.get_current_user():
-            if not google.appengine.api.users.is_current_user_admin():
-                flask.abort(401)  # Unauthorized
-            return func(*args, **kwargs)
-        return flask.redirect(google.appengine.api.users.create_login_url(flask.request.url))
-    return decorated_view
+        user = application.user.services.fetch_by_email(session.email)
+        if not user:
+            return flask.redirect('/login')
+        if not user.verified:
+            return flask.redirect('/verify')
+        return func()
+    return wrapper
