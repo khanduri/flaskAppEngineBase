@@ -1,7 +1,9 @@
 import authomatic.providers.oauth1
 import authomatic.providers.oauth2
-
 import application.secret_keys
+
+
+SESSION_EXPIRATION = application.secret_keys.SESSION_EXPIRATION
 
 
 #############################################

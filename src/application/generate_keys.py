@@ -35,6 +35,12 @@ SESSION_KEY = '$session_key'
 
 
 #############################################
+# Base Settings
+#############################################
+SESSION_EXPIRATION = 90 * 24 * 60 * 60  # days * hours * minutes * seconds
+
+
+#############################################
 # EMail Settings
 #############################################
 class Emails(object):

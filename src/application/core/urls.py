@@ -17,6 +17,7 @@ application.app.add_url_rule('/examples/cached', 'cached_examples', view_func=ap
 ############## REMOVE THIS #################
 
 import application.compute.urls
+import application.user.urls
 
 
 ## Error handlers
