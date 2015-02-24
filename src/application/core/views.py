@@ -1,6 +1,7 @@
 import flask
 import flask_cache
-import application.core.decorators
+import application
+
 
 
 # Flask-Cache (configured to use App Engine Memcache API)
@@ -20,10 +21,6 @@ def warmup():
 
 
 ############## REMOVE THIS #################
-@application.core.decorators.admin_required
-def admin_only():
-    return 'Super-seekrit admin page.'
-
 @cache.cached(timeout=60)
 def cached_examples():
     examples = None
