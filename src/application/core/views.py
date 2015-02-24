@@ -2,13 +2,12 @@ import flask
 import flask_cache
 import application
 
-
 # Flask-Cache (configured to use App Engine Memcache API)
 cache = flask_cache.Cache(application.app)
 
 
 def home():
-    return flask.render_template('index.html', result=None)
+    return flask.redirect('/login')
 
 
 def warmup():
@@ -18,10 +17,3 @@ def warmup():
     """
     return ''
 
-
-############## REMOVE THIS #################
-@cache.cached(timeout=60)
-def cached_examples():
-    examples = None
-    return flask.render_template('list_examples_cached.html', examples=examples)
-############## REMOVE THIS #################
