@@ -12,7 +12,6 @@ application.app.add_url_rule('/_ah/warmup', 'warmup', view_func=application.core
 application.app.add_url_rule('/', 'home', view_func=application.core.views.home)
 
 ############## REMOVE THIS #################
-application.app.add_url_rule('/admin_only', 'admin_only', view_func=application.core.views.admin_only)
 application.app.add_url_rule('/examples/cached', 'cached_examples', view_func=application.core.views.cached_examples, methods=['GET'])
 ############## REMOVE THIS #################
 

@@ -3,6 +3,7 @@ import os
 import flask
 import flask_debugtoolbar
 import werkzeug.debug
+from application.user import authentication
 
 
 app = flask.Flask('application')
@@ -34,4 +35,4 @@ else:
 app.jinja_env.add_extension('jinja2.ext.loopcontrols')
 
 # Pull in URL dispatch routes
-from application.core import authentication, urls
+from application.core import urls

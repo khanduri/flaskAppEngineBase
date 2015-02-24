@@ -3,6 +3,7 @@ import application.user.api
 import application.user.views
 import application.user.tasks
 import application.user.cron
+import application.user.authentication
 
 
 ##########################################################################################
@@ -13,6 +14,7 @@ application.app.add_url_rule('/register', view_func=application.user.views.regis
 application.app.add_url_rule('/verify', view_func=application.user.views.verify, methods=['GET'])
 application.app.add_url_rule('/logout', view_func=application.user.views.logout, methods=['GET'])
 
+application.app.add_url_rule('/login/<provider_name>/', view_func=application.user.authentication.social_login, methods=['GET', 'POST'])
 
 ##########################################################################################
 # API

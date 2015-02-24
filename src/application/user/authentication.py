@@ -11,7 +11,6 @@ auth = authomatic.Authomatic(application.core.settings.AUTHOMATIC_CONFIG,
                              report_errors=False)
 
 
-@application.app.route('/login/<provider_name>/', methods=['GET', 'POST'])
 def social_login(provider_name):
     response = flask.make_response()
     result = auth.login(authomatic.adapters.WerkzeugAdapter(flask.request, response), provider_name)
