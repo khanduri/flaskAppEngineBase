@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <div class="row text-center">
+            <div class="col-md-5">
+                <form action="/register" method="POST" data-parsley-validate>
+                    <div class="form-group">
+                        <label>Sign Up!</label>
+                        <input class="form-control" type="email" name="email" placeholder="Email" data-parsley-trigger="change" required/>
+                        <input class="form-control" type="password" name="password" placeholder="Password" minlength="6" required/>
+                        <input class="form-control" type="text" name="first" placeholder="First Name" required/>
+                        <input class="form-control" type="text" name="last" placeholder="Last Name" required/>
+
+                        <input class="form-control btn btn-success" type="submit" value="Sign up!">
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+                OR
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Login With</label>
+                    <hr/>
+                    <a class="form-control btn btn-info" href="login/fb">Facebook - <i class="fa fa-facebook"></i></a>
+                    <a class="form-control btn btn-primary" href="login/tw">Twitter - <i class="fa fa-twitter"></i></a>
+                    <hr/>
+                    <form action="/" method="POST">
+                        <label>Sign In!</label>
+                        <input class="form-control" type="text" name="email" placeholder="Email" required/>
+                        <input class="form-control" type="password" name="password" placeholder="Password" REQUIRED/>
+
+                        <input class="form-control btn btn-success" type="submit" value="Sign In!">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -11,11 +11,11 @@ def login_required(func):
         session = application.core.utils.Session(sid)
 
         if not session.valid:
-            return flask.redirect('/login')
+            return flask.redirect('/')
 
         user = application.user.services.fetch_by_email(session.email)
         if not user:
-            return flask.redirect('/login')
+            return flask.redirect('/')
         if not user.verified:
             return flask.redirect('/verify')
         return func()

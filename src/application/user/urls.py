@@ -9,7 +9,7 @@ import application.user.authentication
 ##########################################################################################
 # Views
 ##########################################################################################
-application.app.add_url_rule('/login', view_func=application.user.views.login, methods=['POST', 'GET'])
+application.app.add_url_rule('/', view_func=application.user.views.login, methods=['POST', 'GET'])
 application.app.add_url_rule('/register', view_func=application.user.views.register, methods=['POST'])
 application.app.add_url_rule('/verify', view_func=application.user.views.verify, methods=['GET'])
 application.app.add_url_rule('/logout', view_func=application.user.views.logout, methods=['GET'])

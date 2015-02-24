@@ -8,11 +8,9 @@ import application.core.views
 # See https://cloud.google.com/appengine/docs/python/config/appconfig?csw=1#Python_app_yaml_Warmup_requests
 application.app.add_url_rule('/_ah/warmup', 'warmup', view_func=application.core.views.warmup)
 
-application.app.add_url_rule('/', 'home', view_func=application.core.views.home)
 
-
-import application.compute.urls
 import application.user.urls
+import application.compute.urls
 
 
 ## Error handlers

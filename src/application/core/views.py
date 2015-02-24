@@ -6,10 +6,6 @@ import application
 cache = flask_cache.Cache(application.app)
 
 
-def home():
-    return flask.redirect('/login')
-
-
 def warmup():
     """
     App Engine warmup handler
