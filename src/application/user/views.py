@@ -79,7 +79,7 @@ def login():
                 return flask.render_template('login.html', flash_messages=flash_messages)
 
         else:
-            flash_messages = [('warning', ' Login form contains invalid data')]
+            flash_messages = [('warning', 'Invalid login!')]
             return flask.render_template('login.html', flash_messages=flash_messages)
 
     if not user.verified:
