@@ -1,4 +1,5 @@
 import application.base.decorators
+import application.user.decorators
 import application.compute.forms
 import application.compute.services
 
@@ -7,6 +8,7 @@ import application.compute.services
 # Collection operations
 ##########################################
 
+@application.user.decorators.login_required
 @application.base.decorators.return_json
 def get_all_computes():
     computes = application.compute.services.fetch_all_computes()

@@ -3,7 +3,6 @@ import flask_cache
 import application
 
 
-
 # Flask-Cache (configured to use App Engine Memcache API)
 cache = flask_cache.Cache(application.app)
 
