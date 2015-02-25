@@ -25,6 +25,7 @@ Todo
  - [ ] Add logging support
  - [ ] Support Roles
  - [ ] Add Feedback options
+ - [ ] SASS move
  - [ ] Native authentication
  - [x] Add mail support
  - [x] Remove libs from repo
