@@ -42,18 +42,14 @@ class Session(object):
 def set_session(email):
     sid = flask.request.cookies.get('sid')
     if sid:
-        print '--- reuser session: %s' % sid
         return sid
     session = Session(None)
     ip = flask.request.remote_addr
     sid = session.set(email, ip)
-    print '--- NEW session: %s' % sid
     return sid
 
 
 def get_session():
     sid = flask.request.cookies.get('sid')
     session = Session(sid)
-    print '--- GET sid: %s' % sid
-    print '--- GET session: %s' % str(session)
     return session

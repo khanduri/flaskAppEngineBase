@@ -1,17 +1,21 @@
-
 .nav-content {
     margin-right: 10%;
     margin-left: 10%;
 }
 
-footer {
-    position: absolute;
-    width: 100%;
+.text-muted {
+    margin: 20px 0;
     font-size: 14px;
 }
 
-.text-muted {
-    margin: 20px 0;
+.forgot_password {
+    font-size: 10px;
+    color: #717171;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
     font-size: 14px;
 }
 
