@@ -2,8 +2,28 @@
 
 {% block content %}
 
-<div class="alert alert-info">
-    Please check your email for verification steps. If you'd like to get the email again, click here!
-</div>
+    {% if social %}
+        <div class="row">
+            <div class="col-md-5">
+                <h3>Just one more step!</h3>
+                <form action="/register" method="POST" data-parsley-validate>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="first" placeholder="First Name" required value="{{ social.user.first_name if social.user.first_name else '' }}"/>
+                        <input class="form-control" type="text" name="last" placeholder="Last Name" required value="{{ social.user.last_name if social.user.last_name else '' }}"/>
+                        <input class="form-control" type="email" name="email" placeholder="Email" data-parsley-trigger="change" required value="{{ social.user.email if social.user.email else '' }}"/>
+                        <input class="form-control" type="password" name="password" placeholder="Password" minlength="6" required/>
+
+                        <input class="form-control btn btn-success" type="submit" value="Sign up!">
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Please check your email for verification steps. If you'd like to get the email again, click <a href="/verify/resend">here</a>!
+        </div>
+        {% if resend %}<div class="alert alert-success"><p>Email Sent!</p></div>{% endif %}
+    {% endif %}
 
 {% endblock %}
+

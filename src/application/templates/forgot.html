@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <h3>Reset your password!</h3>
+        <form action="/forgot" method="POST" data-parsley-validate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-9">
+                        <input class="form-control" type="email" name="email" placeholder="Email" data-parsley-trigger="change" required/>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control btn btn-success" type="submit" value="Send reset Instructions">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

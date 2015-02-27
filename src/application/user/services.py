@@ -1,4 +1,5 @@
 import application.user.models
+import application.user.mails
 
 
 ##########################################
@@ -13,7 +14,7 @@ def fetch_all_users():
 
 def create_new_user(first, last, email, passhash):
     user = application.user.models.UserQuery.insert_single(first, last, email, passhash)
-    # TODO: send verification email here
+    application.user.mails.send_verification(email, first, user.verification_code)
     return user
 
 

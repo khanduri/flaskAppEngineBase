@@ -8,7 +8,7 @@ def send_reset(email, first, reset_code):
 
     data = {
         'first': first.capitalize(),
-        'link': '%s?reset_code=%s' % (flask.url_for('.reset', _external=True), reset_code)
+        'link': '%s?reset_code=%s&email=%s' % (flask.url_for('.reset', _external=True), reset_code, email)
     }
 
     body = """

@@ -9,6 +9,7 @@ class User(google.appengine.ext.ndb.Model):
     passhash = google.appengine.ext.ndb.StringProperty()
     verified = google.appengine.ext.ndb.BooleanProperty()
     verification_code = google.appengine.ext.ndb.StringProperty()
+    reset_code = google.appengine.ext.ndb.StringProperty()
 
     timestamp_created = google.appengine.ext.ndb.DateTimeProperty(auto_now=True)
     timestamp_removed = google.appengine.ext.ndb.DateTimeProperty(auto_now=True)
@@ -21,8 +22,9 @@ class User(google.appengine.ext.ndb.Model):
             'email': self.email,
             'first': self.first,
             'last': self.last,
-            'verification_code': self.verification_code,
             'verified': self.verified,
+            'verification_code': self.verification_code,
+            'reset_code': self.reset_code,
 
             'timestamp_created': self.timestamp_created,
             'timestamp_removed': self.timestamp_removed,
@@ -48,6 +50,7 @@ class UserQuery(object):
         user = User(first=first, last=last, email=email, passhash=passhash)
         user.verified = False
         user.verification_code = uuid.uuid4().hex
+        user.reset_code = uuid.uuid4().hex
         user.put()
         return self.model_class(user.get_dict_repr())
 

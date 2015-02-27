@@ -25,4 +25,7 @@ def send_message(send_to_list, subject, html, text, send_from=None):
     if not send_from:
         message.set_from(application.core.settings.EMails.NO_REPLY)
 
-    email_provider.send(message)
+    # email_provider.send(message)
+    print '---------------------------'
+    print text
+    print '---------------------------'

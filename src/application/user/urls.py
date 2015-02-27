@@ -9,9 +9,13 @@ import application.user.authentication
 ##########################################################################################
 # Views
 ##########################################################################################
-application.app.add_url_rule('/', view_func=application.user.views.login, methods=['POST', 'GET'])
+application.app.add_url_rule('/', view_func=application.user.views.login_get, methods=['GET'])
+application.app.add_url_rule('/', view_func=application.user.views.login_post, methods=['POST'])
 application.app.add_url_rule('/register', view_func=application.user.views.register, methods=['POST'])
+application.app.add_url_rule('/forgot', view_func=application.user.views.forgot, methods=['GET', 'POST'])
 application.app.add_url_rule('/verify', view_func=application.user.views.verify, methods=['GET'])
+application.app.add_url_rule('/verify/resend', view_func=application.user.views.verify_resend, methods=['GET'])
+application.app.add_url_rule('/reset', view_func=application.user.views.reset, methods=['GET', 'POST'])
 application.app.add_url_rule('/logout', view_func=application.user.views.logout, methods=['GET'])
 
 application.app.add_url_rule('/login/<provider_name>/', view_func=application.user.authentication.social_login, methods=['GET', 'POST'])
