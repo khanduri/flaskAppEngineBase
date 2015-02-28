@@ -2,6 +2,7 @@ import application.base.decorators
 import application.user.forms
 import application.user.services
 import hashlib
+import jwt
 
 
 ##########################################

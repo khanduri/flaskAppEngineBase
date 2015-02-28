@@ -8,6 +8,6 @@
 *.pydevproject
 *.kpf
 venv
-src/lib/*
+src-be/lib/*
 # Don't store secret keys in version control
 secret_keys.py
