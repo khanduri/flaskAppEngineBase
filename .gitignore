@@ -8,6 +8,14 @@
 *.pydevproject
 *.kpf
 venv
+
 src-be/lib/*
+
+src-fe/node_modules
+src-fe/dist
+src-fe/.tmp
+src-fe/.sass-cache
+src-fe/bower_components
+
 # Don't store secret keys in version control
 secret_keys.py
