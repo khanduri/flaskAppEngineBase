@@ -3,10 +3,12 @@ import os
 import flask
 import flask_debugtoolbar
 import werkzeug.debug
+import flask_wtf.csrf
 from application.user import authentication
 
 
 app = flask.Flask('application')
+csrf = flask_wtf.csrf.CsrfProtect(app)
 
 
 if os.getenv('FLASK_CONF') == 'TEST':

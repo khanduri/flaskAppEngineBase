@@ -4,6 +4,7 @@ import application.secret_keys
 
 
 SESSION_EXPIRATION = application.secret_keys.SESSION_EXPIRATION
+JWT_TOKEN_SECRET =  application.secret_keys.JWT_TOKEN_SECRET
 
 
 #############################################

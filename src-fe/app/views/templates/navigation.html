@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default">
+    <div class="nav-content">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LOGO</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" ng-hide="navigationCtrl.isLoggedIn">
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-hide="navigationCtrl.isLoggedIn">
+                <li ng-class="{ active:navigationCtrl.isSelected(1)}"><a ng-click="navigationCtrl.setSelected(1)" ng-href="#">Login with Facebook</a></li>
+                <li ng-class="{ active:navigationCtrl.isSelected(2)}"><a ng-click="navigationCtrl.setSelected(2)" ng-href="#/login">Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav" ng-show="navigationCtrl.isLoggedIn">
+                <li><a href="#">Right Link</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-show="navigationCtrl.isLoggedIn">
+                <li><a href="#">Settings</a></li>
+                <li><a href ng-click="navigationCtrl.logout()">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

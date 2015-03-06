@@ -1,7 +1,7 @@
-import hashlib
 import flask
 import application
 import application.core.session
+import application.core.crypto
 import application.user.decorators
 import application.user.services
 import application.user.forms
@@ -34,7 +34,7 @@ def register():
         first = form.data.get('first')
         last = form.data.get('last')
         password = form.data.get('password')
-        passhash = hashlib.md5(password).hexdigest()
+        passhash = application.core.crypto.encode_password(password)
 
         user = application.user.services.create_new_user(first, last, email, passhash)
         return _set_session_and_get_response('index.html', user)
@@ -77,7 +77,7 @@ def reset():
             reset_code = form.data.get('reset_code')
             if reset_code == user.reset_code:
                 password = form.data.get('password')
-                passhash = hashlib.md5(password).hexdigest()
+                passhash = application.core.crypto.encode_password(password)
                 application.user.services.modify_user(user.id, passhash=passhash)
 
                 return _set_session_and_get_response('index.html', user, not_verified=not user.verified)
@@ -125,7 +125,7 @@ def login_post():
     if form.validate_on_submit():
         email = form.data.get('email')
         password = form.data.get('password')
-        passhash = hashlib.md5(password).hexdigest()
+        passhash = application.core.crypto.encode_password(password)
         user = application.user.services.fetch_by_login(email, passhash)
         if user:
             return _set_session_and_get_response('index.html', user, not_verified=not user.verified)

@@ -22,6 +22,7 @@ class User(google.appengine.ext.ndb.Model):
             'email': self.email,
             'first': self.first,
             'last': self.last,
+            'passhash': self.passhash,
             'verified': self.verified,
             'verification_code': self.verification_code,
             'reset_code': self.reset_code,

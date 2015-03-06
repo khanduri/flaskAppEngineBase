@@ -26,6 +26,10 @@ application.app.add_url_rule('/login/<provider_name>/', view_func=application.us
 application.app.add_url_rule('/api/users', view_func=application.user.api.get_all_users, methods=['GET'])
 application.app.add_url_rule('/api/users', view_func=application.user.api.post_user, methods=['POST'])
 
+application.app.add_url_rule('/api/users/me', view_func=application.user.api.user_me, methods=['GET', 'OPTIONS'])
+application.app.add_url_rule('/api/users/login', view_func=application.user.api.user_login, methods=['POST', 'OPTIONS'])
+application.app.add_url_rule('/api/users/register', view_func=application.user.api.user_register, methods=['POST', 'OPTIONS'])
+
 application.app.add_url_rule('/api/users/<int:user_id>', view_func=application.user.api.get_user, methods=['GET'])
 application.app.add_url_rule('/api/users/<int:user_id>', view_func=application.user.api.update_user, methods=['PUT'])
 
